@@ -21,6 +21,7 @@ app.add_middleware(
     allow_credentials=False,
     allow_methods=["POST", "OPTIONS"], # Explicitly allow POST and OPTIONS (for preflight check)
     allow_headers=["*"],
+    expose_headers=["*"]
 )
 
 
