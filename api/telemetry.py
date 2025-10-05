@@ -14,15 +14,16 @@ class MetricsRequest(BaseModel):
 app = FastAPI()
 
 # --- CORS Configuration ---
-# Enable CORS for POST requests from any origin
+# Enable CORS for POST requests from any origin (Access-Control-Allow-Origin: *)
 origins = ["*"]
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
+    allow_origins=origins,          # Allows all origins
     allow_credentials=True,
-    allow_methods=["POST"],
+    allow_methods=["POST", "OPTIONS"], # Explicitly allow POST and OPTIONS (for preflight check)
     allow_headers=["*"],
 )
+
 
 # --- Sample Telemetry Data (Loaded from JSON) ---
 # NOTE: In a real deployment, this would be loaded from a database or storage.
